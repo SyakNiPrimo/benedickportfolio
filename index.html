@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benedick Tiaga | Web Development, Automation, Backend Support</title>
+  <meta
+    name="description"
+    content="I help businesses save time through web development, automation, and backend support."
+  />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --card: #1e293b;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --line: rgba(148, 163, 184, 0.18);
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --max: 1120px;
+      --radius: 20px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0b1120 0%, #111827 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(100% - 2rem, var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.76);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      color: #08111f;
+    }
+
+    .button-secondary {
+      border-color: rgba(226, 232, 240, 0.15);
+      background: rgba(30, 41, 59, 0.75);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      margin: 0 0 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 60ch;
+      margin: 0 0 1.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+      padding: 1.6rem;
+    }
+
+    .summary-card h2,
+    .section h2 {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      margin: 0 0 0.8rem;
+    }
+
+    .summary-card p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .mini-item {
+      padding: 0.9rem 1rem;
+      background: rgba(2, 6, 23, 0.35);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: 16px;
+    }
+
+    .mini-item strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    section {
+      padding: 1rem 0 4rem;
+    }
+
+    .section-header {
+      max-width: 720px;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      margin: 0.3rem 0 0;
+    }
+
+    .services,
+    .projects,
+    .problems,
+    .contact-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .services {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .projects {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .problems {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.15rem;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      color: #bae6fd;
+      font-size: 0.86rem;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .project-link {
+      color: #a5f3fc;
+      font-weight: 700;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .about-photo {
+      aspect-ratio: 1 / 1;
+      border-radius: 28px;
+      background: linear-gradient(160deg, rgba(56, 189, 248, 0.25), rgba(34, 197, 94, 0.18));
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+    }
+
+    .cta {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(34, 197, 94, 0.1));
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 28px;
+      padding: 1.8rem;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .contact-links a {
+      display: block;
+      padding: 0.95rem 1rem;
+      border-radius: 16px;
+      background: rgba(2, 6, 23, 0.35);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    footer {
+      padding: 1.5rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .services,
+      .projects,
+      .problems,
+      .contact-grid,
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 4.5rem;
+      }
+
+      .nav-links {
+        gap: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">Benedick Tiaga</a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Web Development • Automation • Backend Support</span>
+          <h1>I help businesses save time with cleaner websites and smoother workflows.</h1>
+          <p>
+            I work with business owners, agencies, and growing teams that need reliable non voice support.
+            From website updates and landing pages to lead flow automation and backend tasks, I help keep things moving behind the scenes.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Work With Me</a>
+            <a class="button button-secondary" href="#projects">See My Work</a>
+          </div>
+          <div class="trust-row">
+            <span>Open to US, CA, EU, and AU clients</span>
+            <span>WordPress, HTML, CSS, JavaScript</span>
+            <span>Automation and admin workflows</span>
+          </div>
+        </div>
+
+        <aside class="panel summary-card">
+          <h2>What I can help with</h2>
+          <p>
+            Practical support for businesses that want better systems without adding more manual work.
+          </p>
+          <div class="mini-list">
+            <div class="mini-item">
+              <strong>Web development</strong>
+              Landing pages, website updates, and clean front end improvements.
+            </div>
+            <div class="mini-item">
+              <strong>Automation</strong>
+              Connect forms, email, spreadsheets, and CRM tools to reduce repetitive work.
+            </div>
+            <div class="mini-item">
+              <strong>Backend support</strong>
+              Content uploads, data cleanup, documentation, and admin workflows.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Services</h2>
+          <p>
+            Focused support that helps businesses stay organized, save time, and improve how work gets done.
+          </p>
+        </div>
+
+        <div class="services">
+          <article class="card">
+            <h3>Website updates and landing pages</h3>
+            <p>
+              Build or improve pages that look clean, work well on mobile, and guide visitors toward taking action.
+            </p>
+            <div class="tag-row">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">WordPress</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Automation for repetitive tasks</h3>
+            <p>
+              Help reduce manual work by connecting forms, spreadsheets, email, and CRM processes into a smoother flow.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Lead Flow</span>
+              <span class="tag">CRM</span>
+              <span class="tag">Google Sheets</span>
+              <span class="tag">Process Setup</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Backend and admin support</h3>
+            <p>
+              Keep operations moving with content uploads, data cleanup, SOP creation, and dependable day to day support.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Documentation</span>
+              <span class="tag">Data Cleanup</span>
+              <span class="tag">Backend Tasks</span>
+              <span class="tag">Non Voice Support</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>Problems I help solve</h2>
+          <p>
+            Businesses usually reach out when daily work starts taking more time than it should.
+          </p>
+        </div>
+
+        <div class="problems">
+          <article class="card">
+            <h3>Outdated or hard to manage website</h3>
+            <p>
+              I help clean up pages, improve structure, and make websites easier to update and maintain.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Messy lead handling process</h3>
+            <p>
+              If leads are coming in but the follow up flow is unclear, I help make the process more organized.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Too much manual admin work</h3>
+            <p>
+              I help reduce repetitive steps so teams can spend more time on sales, service, and growth.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Need dependable support behind the scenes</h3>
+            <p>
+              I provide reliable non voice support for the work that keeps a business moving day to day.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured projects</h2>
+          <p>
+            Replace the placeholders below with your real screenshots, live links, and GitHub repository links.
+          </p>
+        </div>
+
+        <div class="projects">
+          <article class="card">
+            <h3>SOLD3X website</h3>
+            <p>
+              A lead focused real estate website built to capture seller inquiries, guide visitors through a streamlined experience, and send leads into Follow Up Boss through API based workflows.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Real Estate Website</span>
+              <span class="tag">Lead Capture</span>
+              <span class="tag">Follow Up Boss</span>
+            </div>
+            <div class="project-meta">
+              <span class="project-link">Case study available on request</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Cup of Joy app</h3>
+            <p>
+              An operations focused web app concept for a food and beverage business with attendance tracking, payroll logic, QR based check in, and POS support designed to make daily staff management easier.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Operations App</span>
+              <span class="tag">Attendance</span>
+              <span class="tag">POS Workflow</span>
+            </div>
+            <div class="project-meta">
+              <span class="project-link">Case study available on request</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Website updates and maintenance support</h3>
+            <p>
+              Ongoing page edits, content updates, structure improvements, and backend support to keep websites polished, current, and easier to manage.
+            </p>
+            <div class="tag-row">
+              <span class="tag">WordPress</span>
+              <span class="tag">Content Updates</span>
+              <span class="tag">Maintenance</span>
+            </div>
+            <div class="project-meta">
+              <span class="project-link">Examples available on request</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Backend support and process organization</h3>
+            <p>
+              Support work focused on cleaning data, organizing workflows, documenting SOPs, and keeping business operations moving behind the scenes.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Backend Support</span>
+              <span class="tag">Data Cleanup</span>
+              <span class="tag">SOPs</span>
+            </div>
+            <div class="project-meta">
+              <span class="project-link">Examples available on request</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about">
+        <div class="about-photo">
+          <img src="Profile.jpeg" alt="Benedick Tiaga" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px;" />
+        </div>
+
+        <div class="card">
+          <h2>About me</h2>
+          <p>
+            Hi, I’m Benedick. I help businesses save time through web development, automation, and backend support.
+            My work focuses on practical systems that make daily operations easier, cleaner, and more efficient.
+          </p>
+          <p>
+            I work best with business owners, agencies, and growing teams that need dependable execution behind the scenes without constant calls or unnecessary back and forth.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Reliable Execution</span>
+            <span class="tag">Systems Thinking</span>
+            <span class="tag">Client Focused</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid">
+        <div class="cta">
+          <h2>Need help with your website, workflow, or backend tasks?</h2>
+          <p>
+            If you need dependable support for web development, automation, or behind the scenes business tasks, let’s connect.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:benedick.tiaga04@gmail.com">Email Me</a>
+            <a class="button button-secondary" href="https://www.linkedin.com/in/benedick-tiaga-jr-51b253248/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Contact links</h3>
+          <div class="contact-links">
+            <a href="mailto:benedick.tiaga04@gmail.com">Email: benedick.tiaga04@gmail.com</a>
+            <a href="https://www.linkedin.com/in/benedick-tiaga-jr-51b253248/" target="_blank" rel="noreferrer">LinkedIn profile</a>
+            <a href="https://github.com/SyakNiPrimo" target="_blank" rel="noreferrer">GitHub profile</a>
+            <a href="https://www.threads.com/@benedicktiaga" target="_blank" rel="noreferrer">Threads profile</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Benedick Tiaga. Built for GitHub Pages.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
