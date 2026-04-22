@@ -131,6 +131,41 @@
       align-items: center;
     }
 
+    .hero-profile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(226, 232, 240, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-name-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-name {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .hero-role {
+      margin: 0.35rem 0 0;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
     .eyebrow {
       display: inline-block;
       font-size: 0.88rem;
@@ -261,6 +296,14 @@
       color: var(--muted);
     }
 
+    .project-image {
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      border: 1px solid var(--line);
+      display: block;
+    }
+
     .tag-row {
       display: flex;
       flex-wrap: wrap;
@@ -304,7 +347,7 @@
       border: 1px solid rgba(148, 163, 184, 0.18);
       display: grid;
       place-items: center;
-      text-align: center;
+      text-align: left;
       padding: 2rem;
       color: var(--muted);
     }
@@ -359,6 +402,15 @@
       .nav-links {
         gap: 0.7rem;
       }
+
+      .hero-profile {
+        align-items: flex-start;
+      }
+
+      .hero-avatar {
+        width: 82px;
+        height: 82px;
+      }
     }
   </style>
 </head>
@@ -379,7 +431,15 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Web Development • Automation • Backend Support</span>
+          <div class="hero-profile">
+            <img src="Profile.jpeg" alt="Benedick Tiaga" class="hero-avatar" />
+            <div class="hero-name-block">
+              <p class="hero-name">Benedick Tiaga</p>
+              <p class="hero-role">Web Development, Automation, and Backend Support</p>
+            </div>
+          </div>
+
+          <span class="eyebrow">Available for freelance and contract projects</span>
           <h1>I help businesses save time with cleaner websites and smoother workflows.</h1>
           <p>
             I work with business owners, agencies, and growing teams that need reliable non voice support.
@@ -524,6 +584,7 @@
         <div class="projects">
           <article class="card">
             <h3>SOLD3X website</h3>
+            <img src="sold3x-preview.png" alt="SOLD3X website preview" class="project-image" />
             <p>
               Lead generation website for a real estate brand focused on seller inquiries. Built to create a smoother user journey, capture leads through forms and quiz flows, and send submissions into Follow Up Boss through API based workflows.
             </p>
@@ -540,6 +601,7 @@
 
           <article class="card">
             <h3>Cup of Joy app</h3>
+            <img src="cupofjoy-preview.png" alt="Cup of Joy app preview" class="project-image" />
             <p>
               Operations focused web app concept for a food and beverage business. Designed to support attendance tracking, QR based check in, payroll logic, and POS workflows to make daily staff management more efficient.
             </p>
@@ -590,7 +652,12 @@
     <section id="about">
       <div class="container about">
         <div class="about-photo">
-          <img src="Profile.jpeg" alt="Benedick Tiaga" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px;" />
+          <div>
+            <strong style="display:block; font-size: 1.4rem; color: var(--text); margin-bottom: 1rem;">What I bring</strong>
+            <p style="margin-top: 0; margin-bottom: 0;">
+              Practical execution, strong organization, and reliable support for websites, workflows, and backend operations.
+            </p>
+          </div>
         </div>
 
         <div class="card">
