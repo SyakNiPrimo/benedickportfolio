@@ -352,79 +352,19 @@
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
       gap: 1.2rem;
-      align-items: stretch;
+      align-items: start;
     }
 
     .about-photo {
+      aspect-ratio: 1 / 1;
       border-radius: 28px;
-      overflow: hidden;
+      background: linear-gradient(160deg, rgba(56, 189, 248, 0.18), rgba(96, 165, 250, 0.08));
       border: 1px solid rgba(148, 163, 184, 0.18);
-      background: rgba(15, 23, 42, 0.88);
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-    }
-
-    .about-photo-image {
-      width: 100%;
-      height: 370px;
-      object-fit: cover;
-      object-position: center 18%;
-      display: block;
-    }
-
-    .about-photo-content {
-      padding: 1.6rem;
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.88));
-    }
-
-    .about-photo-content strong {
-      display: block;
-      font-size: 1.35rem;
-      color: var(--text);
-      margin-bottom: 0.8rem;
-    }
-
-    .about-photo-content p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .about-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .about-card h2 {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      font-size: clamp(1.9rem, 3vw, 2.4rem);
-    }
-
-    .about-card p {
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-    }
-
-    .about-points {
       display: grid;
-      gap: 0.85rem;
-      margin-top: 0.6rem;
-    }
-
-    .about-point {
-      padding: 0.95rem 1rem;
-      border-radius: 16px;
-      background: rgba(2, 6, 23, 0.35);
-      border: 1px solid rgba(148, 163, 184, 0.14);
+      place-items: center;
+      text-align: left;
+      padding: 2rem;
       color: var(--muted);
-    }
-
-    .about-point strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 0.2rem;
     }
 
     .cta {
@@ -471,10 +411,6 @@
       h1 {
         max-width: 100%;
       }
-
-      .about-photo-image {
-        height: 320px;
-      }
     }
 
     @media (max-width: 640px) {
@@ -504,10 +440,6 @@
       .hero-role {
         font-size: 1rem;
       }
-
-      .about-photo-image {
-        height: 280px;
-      }
     }
   </style>
 </head>
@@ -530,7 +462,7 @@
         <div>
           <div class="hero-profile">
             <div class="hero-avatar-wrap">
-              <img src="Profile.jpeg" alt="Benedick Tiaga" class="hero-avatar" />
+              <img src="Profile.jpg" alt="Benedick Tiaga" class="hero-avatar" />
             </div>
             <div class="hero-name-block">
               <p class="hero-name">Benedick Tiaga</p>
@@ -751,16 +683,15 @@
     <section id="about">
       <div class="container about">
         <div class="about-photo">
-          <img src="Profile.jpeg" alt="Benedick Tiaga" class="about-photo-image" />
-          <div class="about-photo-content">
-            <strong>What I bring</strong>
-            <p>
+          <div>
+            <strong style="display:block; font-size: 1.4rem; color: var(--text); margin-bottom: 1rem;">What I bring</strong>
+            <p style="margin-top: 0; margin-bottom: 0;">
               Practical execution, strong organization, and reliable support for websites, workflows, and backend operations.
             </p>
           </div>
         </div>
 
-        <div class="card about-card">
+        <div class="card">
           <h2>About me</h2>
           <p>
             Hi, I’m Benedick. I help businesses save time through web development, automation, and backend support.
@@ -769,20 +700,10 @@
           <p>
             I work best with business owners, agencies, and growing teams that need dependable execution behind the scenes without constant calls or unnecessary back and forth.
           </p>
-
-          <div class="about-points">
-            <div class="about-point">
-              <strong>Reliable execution</strong>
-              Dependable support for projects, tasks, and ongoing business operations.
-            </div>
-            <div class="about-point">
-              <strong>Systems thinking</strong>
-              I look for ways to make workflows cleaner, simpler, and easier to manage.
-            </div>
-            <div class="about-point">
-              <strong>Client focused</strong>
-              I build with the goal of saving time, reducing friction, and helping clients move faster.
-            </div>
+          <div class="tag-row">
+            <span class="tag">Reliable Execution</span>
+            <span class="tag">Systems Thinking</span>
+            <span class="tag">Client Focused</span>
           </div>
         </div>
       </div>
