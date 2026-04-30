@@ -446,20 +446,7 @@
       background: rgba(2, 6, 23, 0.35);
       border: 1px solid rgba(148, 163, 184, 0.14);
     }
-
-
-    .tiktok-embed {
-      margin: 0 auto;
-      border-radius: 16px;
-      overflow: hidden;
-      background: rgba(2, 6, 23, 0.35);
-    }
-
-    #video-portfolio .card {
-      overflow: hidden;
-    }
-
-    footer {
+footer {
       padding: 1.5rem 0 3rem;
       color: var(--muted);
       font-size: 0.94rem;
@@ -477,6 +464,10 @@
       .problems,
       .contact-grid,
       .about {
+        grid-template-columns: 1fr;
+      }
+
+      .video-grid {
         grid-template-columns: 1fr;
       }
 
@@ -806,7 +797,6 @@
       </div>
     </section>
 
-
     <section id="video-portfolio">
       <div class="container">
         <div class="section-header">
@@ -816,39 +806,48 @@
           </p>
         </div>
 
-        <div class="projects">
-          <article class="card">
+        <div class="video-grid">
+          <article class="card video-card">
             <h3>Video Sample 1</h3>
-            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dendentiaga/video/7407184523420601608" data-video-id="7407184523420601608" style="max-width: 605px; min-width: 325px;">
-              <section>
-                <a target="_blank" title="@dendentiaga" href="https://www.tiktok.com/@dendentiaga?refer=embed">@dendentiaga</a>
-              </section>
-            </blockquote>
+            <div class="video-frame">
+              <iframe
+                src="https://drive.google.com/file/d/1gi9rqjdLbcXXU3y0b8x8Csk2B4RU_7uC/preview"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+              </iframe>
+            </div>
             <div class="project-meta">
+              <a class="project-link" href="https://drive.google.com/file/d/1gi9rqjdLbcXXU3y0b8x8Csk2B4RU_7uC/view?usp=drive_link" target="_blank" rel="noreferrer">Open in Google Drive</a>
               <a class="project-link" href="https://www.tiktok.com/@dendentiaga/video/7407184523420601608?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">Open on TikTok</a>
             </div>
           </article>
 
-          <article class="card">
+          <article class="card video-card">
             <h3>Video Sample 2</h3>
-            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dendentiaga/video/7575204365863079188" data-video-id="7575204365863079188" style="max-width: 605px; min-width: 325px;">
-              <section>
-                <a target="_blank" title="@dendentiaga" href="https://www.tiktok.com/@dendentiaga?refer=embed">@dendentiaga</a>
-              </section>
-            </blockquote>
+            <div class="video-frame">
+              <iframe
+                src="https://drive.google.com/file/d/1tPtLhTdmzS_GYp5F6NtEQr49sVKVMu3X/preview"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+              </iframe>
+            </div>
             <div class="project-meta">
+              <a class="project-link" href="https://drive.google.com/file/d/1tPtLhTdmzS_GYp5F6NtEQr49sVKVMu3X/view?usp=drive_link" target="_blank" rel="noreferrer">Open in Google Drive</a>
               <a class="project-link" href="https://www.tiktok.com/@dendentiaga/video/7575204365863079188?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">Open on TikTok</a>
             </div>
           </article>
 
-          <article class="card">
+          <article class="card video-card">
             <h3>Video Sample 3</h3>
-            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dendentiaga/video/7398865055774772487" data-video-id="7398865055774772487" style="max-width: 605px; min-width: 325px;">
-              <section>
-                <a target="_blank" title="@dendentiaga" href="https://www.tiktok.com/@dendentiaga?refer=embed">@dendentiaga</a>
-              </section>
-            </blockquote>
+            <div class="video-frame">
+              <iframe
+                src="https://drive.google.com/file/d/12cDEbtXUQYNLcBXA1Ikk82bIr3yfT1Gd/preview"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+              </iframe>
+            </div>
             <div class="project-meta">
+              <a class="project-link" href="https://drive.google.com/file/d/12cDEbtXUQYNLcBXA1Ikk82bIr3yfT1Gd/view?usp=drive_link" target="_blank" rel="noreferrer">Open in Google Drive</a>
               <a class="project-link" href="https://www.tiktok.com/@dendentiaga/video/7398865055774772487?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">Open on TikTok</a>
             </div>
           </article>
@@ -940,8 +939,6 @@
       © <span id="year"></span> Benedick Tiaga. Built for GitHub Pages.
     </div>
   </footer>
-
-  <script async src="https://www.tiktok.com/embed.js"></script>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
