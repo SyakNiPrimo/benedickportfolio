@@ -15,7 +15,9 @@ if (Test-Path -LiteralPath $localGit) {
 
 $siteFiles = @(
   "index.html",
+  "thank-you.html",
   "Profile.JPG",
+  "hero-operations.png",
   "cupofjoy-preview.png",
   "sold3x-preview.png",
   ".nojekyll"

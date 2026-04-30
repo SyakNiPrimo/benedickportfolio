@@ -663,6 +663,10 @@
       font-size: 0.92rem;
     }
 
+    .hidden-field {
+      display: none;
+    }
+
     .contact-links {
       display: grid;
       gap: 0.65rem;
@@ -1305,7 +1309,13 @@
             </div>
           </div>
 
-          <form class="contact-form" id="inquiry-form">
+          <form class="contact-form" id="inquiry-form" action="https://formsubmit.co/benedick.tiaga04@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New business support inquiry from website" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://syakniprimo.github.io/benedickportfolio/thank-you.html" />
+            <input class="hidden-field" type="text" name="_honey" tabindex="-1" autocomplete="off" />
+
             <div class="form-grid">
               <div class="field">
                 <label for="name">Name</label>
@@ -1347,8 +1357,8 @@
               <textarea id="message" name="message" required></textarea>
             </div>
 
-            <button class="button button-primary" type="submit">Prepare Inquiry Email</button>
-            <p class="form-note">This opens your email app with the project details filled in.</p>
+            <button class="button button-primary" type="submit">Send Inquiry</button>
+            <p class="form-note">Your message will be sent directly to my inbox. The first live submission may ask me to confirm the email address.</p>
           </form>
         </div>
       </div>
@@ -1413,28 +1423,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.getElementById('inquiry-form').addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      const form = event.currentTarget;
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const service = form.service.value;
-      const timeline = form.timeline.value;
-      const message = form.message.value.trim();
-
-      const subject = encodeURIComponent('Business support inquiry from ' + name);
-      const body = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        'Email: ' + email + '\n' +
-        'Service needed: ' + service + '\n' +
-        'Timeline: ' + timeline + '\n\n' +
-        'Project details:\n' + message
-      );
-
-      window.location.href = 'mailto:benedick.tiaga04@gmail.com?subject=' + subject + '&body=' + body;
-    });
   </script>
 </body>
 </html>
