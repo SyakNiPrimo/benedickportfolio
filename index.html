@@ -619,6 +619,47 @@
       box-shadow: var(--shadow);
     }
 
+    .booking {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .booking-panel {
+      position: sticky;
+      top: 106px;
+    }
+
+    .booking-points {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1.3rem;
+    }
+
+    .booking-point {
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .booking-point strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .booking-widget {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
     .contact-form {
       display: grid;
       gap: 0.9rem;
@@ -825,8 +866,13 @@
       .grid-3,
       .feature-split,
       .cta,
+      .booking,
       .footer-main {
         grid-template-columns: 1fr;
+      }
+
+      .booking-panel {
+        position: static;
       }
 
       .footer-bottom {
@@ -913,6 +959,7 @@
         <a href="#work">Work</a>
         <a href="#process">Process</a>
         <a href="#plans">Engagements</a>
+        <a href="#book">Book a Call</a>
         <a href="#contact" class="nav-cta">Start a Project</a>
         <span class="nav-status">Available for new clients</span>
       </nav>
@@ -930,7 +977,7 @@
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#contact">Start a Project</a>
-            <a class="button button-secondary" href="#services">Explore Services</a>
+            <a class="button button-secondary" href="#book">Book a 30-Min Call</a>
           </div>
           <div class="signal-row" aria-label="Service highlights">
             <span>Websites</span>
@@ -1292,6 +1339,42 @@
       </div>
     </section>
 
+    <section id="book">
+      <div class="container booking">
+        <div class="booking-panel">
+          <div class="section-header">
+            <p class="section-kicker">Book a call</p>
+            <h2>Schedule a 30-minute discovery call.</h2>
+            <p>
+              Pick a time that works for you. We can talk through your website, workflow, backend support, content needs, or outsourcing support goals.
+            </p>
+          </div>
+          <div class="booking-points">
+            <div class="booking-point">
+              <strong>Good fit for</strong>
+              Business owners, agencies, and growing teams that need practical digital support.
+            </div>
+            <div class="booking-point">
+              <strong>Before the call</strong>
+              Bring the task, process, website, or recurring support need you want help with.
+            </div>
+            <div class="booking-point">
+              <strong>After the call</strong>
+              I can suggest the best next step: sprint, monthly support, or a custom support plan.
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-widget">
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/benedick-tiaga04/30min"
+            style="min-width:320px;height:700px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact">
       <div class="container">
         <div class="cta">
@@ -1401,6 +1484,7 @@
           <a href="#work">Featured work</a>
           <a href="#process">Process</a>
           <a href="#plans">Engagements</a>
+          <a href="#book">Book a call</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
@@ -1424,5 +1508,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
