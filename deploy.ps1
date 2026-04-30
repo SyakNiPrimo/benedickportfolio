@@ -15,7 +15,14 @@ if (Test-Path -LiteralPath $localGit) {
 
 $siteFiles = @(
   "index.html",
+  "services.html",
+  "work.html",
+  "about.html",
+  "book.html",
+  "contact.html",
   "thank-you.html",
+  "styles.css",
+  "calendly-automation.md",
   "Profile.JPG",
   "hero-operations.png",
   "cupofjoy-preview.png",
