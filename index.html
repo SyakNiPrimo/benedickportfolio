@@ -3,23 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Benedick Tiaga | Web Development, Automation, Backend Support, and Video Editing</title>
+  <title>Benedick Tiaga | Digital Operations, Web, Automation, and Content Support</title>
   <meta
     name="description"
-    content="I help businesses save time through web development, automation, backend support, and short form video editing."
+    content="Digital operations support for growing businesses. Websites, automation, backend admin, workflow cleanup, and short-form content support."
   />
+  <meta property="og:title" content="Benedick Tiaga | Digital Operations Support" />
+  <meta
+    property="og:description"
+    content="A practical support partner for websites, automation, backend tasks, and content workflows."
+  />
+  <meta property="og:type" content="website" />
   <style>
     :root {
-      --bg: #0f172a;
-      --panel: #111827;
-      --card: #1e293b;
-      --text: #e5e7eb;
-      --muted: #94a3b8;
-      --line: rgba(148, 163, 184, 0.18);
-      --accent: #38bdf8;
-      --max: 1120px;
-      --radius: 20px;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+      --ink: #18211f;
+      --muted: #5d6a66;
+      --soft: #f5f7f2;
+      --paper: #ffffff;
+      --sage: #dfe8dd;
+      --line: #d9e1db;
+      --teal: #0f766e;
+      --teal-dark: #0b514b;
+      --coral: #d95f3d;
+      --gold: #b4832f;
+      --charcoal: #24302d;
+      --max: 1180px;
+      --radius: 8px;
+      --shadow: 0 18px 48px rgba(24, 33, 31, 0.12);
     }
 
     * {
@@ -33,8 +43,8 @@
     body {
       margin: 0;
       font-family: Inter, Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top, #07122e 0%, #0b1120 35%, #111827 100%);
-      color: var(--text);
+      color: var(--ink);
+      background: var(--soft);
       line-height: 1.6;
     }
 
@@ -43,9 +53,17 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
+    img,
+    iframe {
       display: block;
+      max-width: 100%;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+      font: inherit;
     }
 
     .container {
@@ -56,469 +74,645 @@
     .nav {
       position: sticky;
       top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(14px);
-      background: rgba(7, 18, 46, 0.78);
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.9);
       border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 0;
       gap: 1rem;
+      min-height: 72px;
     }
 
     .brand {
-      font-size: 1rem;
+      display: grid;
+      gap: 0.05rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .brand small {
+      font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
+      color: var(--teal);
     }
 
     .nav-links {
       display: flex;
+      align-items: center;
+      justify-content: flex-end;
       gap: 1rem;
       flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .nav-links a {
       color: var(--muted);
-      font-size: 0.95rem;
-      transition: color 0.2s ease;
+      font-size: 0.94rem;
+      font-weight: 700;
     }
 
     .nav-links a:hover {
-      color: var(--text);
+      color: var(--teal-dark);
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.95rem 1.3rem;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+      min-height: 46px;
+      padding: 0.82rem 1rem;
       border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-weight: 800;
+      line-height: 1.1;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
 
     .button:hover {
       transform: translateY(-1px);
-      opacity: 0.96;
     }
 
     .button-primary {
-      background: linear-gradient(135deg, var(--accent), #60a5fa);
-      color: #08111f;
+      background: var(--teal);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: var(--teal-dark);
     }
 
     .button-secondary {
-      border-color: rgba(226, 232, 240, 0.15);
-      background: rgba(30, 41, 59, 0.75);
-      color: var(--text);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.88);
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+
+    .button-outline {
+      color: var(--teal-dark);
+      background: transparent;
+      border-color: var(--teal);
     }
 
     .hero {
-      padding: 5rem 0 4rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 2rem;
-      align-items: start;
-    }
-
-    .hero-profile {
+      position: relative;
+      min-height: 76svh;
       display: flex;
       align-items: center;
-      gap: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-avatar-wrap {
-      width: 140px;
-      height: 140px;
-      border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      background: rgba(15, 23, 42, 0.85);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-      flex-shrink: 0;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(16, 26, 24, 0.92) 0%, rgba(16, 26, 24, 0.72) 48%, rgba(16, 26, 24, 0.22) 100%),
+        url("sold3x-preview.png") center right / cover no-repeat;
     }
 
-    .hero-avatar {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 18%;
-      display: block;
-    }
-
-    .hero-name-block {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .hero-name {
-      margin: 0;
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      font-weight: 800;
-      line-height: 1.1;
-      color: var(--text);
-    }
-
-    .hero-role {
-      margin: 0.45rem 0 0;
-      font-size: 1.08rem;
-      color: var(--muted);
-      max-width: 560px;
+    .hero-content {
+      width: min(720px, 100%);
+      padding: 6rem 0;
     }
 
     .eyebrow {
-      display: inline-block;
+      margin: 0 0 1rem;
+      color: #b7f0e8;
       font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--accent);
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 1rem;
+      letter-spacing: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      overflow-wrap: anywhere;
     }
 
     h1 {
-      font-size: clamp(3rem, 6vw, 5.3rem);
-      line-height: 0.98;
-      margin: 0 0 1rem;
-      letter-spacing: -0.04em;
-      max-width: 9.5ch;
+      margin: 0;
+      max-width: 12ch;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: 0.95;
+      letter-spacing: 0;
     }
 
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 60ch;
-      margin: 0 0 1.8rem;
+    .hero-copy {
+      max-width: 62ch;
+      margin: 1.25rem 0 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: clamp(1rem, 2vw, 1.25rem);
     }
 
-    .hero-actions {
+    .hero-actions,
+    .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-bottom: 1.4rem;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
     }
 
-    .trust-row {
+    .signal-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem 1.2rem;
-      color: var(--muted);
+      gap: 0.7rem;
+      margin-top: 1.4rem;
+      color: rgba(255, 255, 255, 0.86);
       font-size: 0.95rem;
+      font-weight: 700;
     }
 
-    .panel {
-      background: linear-gradient(180deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.96));
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      border-radius: 28px;
-      padding: 1.7rem;
-    }
-
-    .summary-card h2,
-    .section h2 {
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      margin: 0 0 0.8rem;
-    }
-
-    .summary-card p {
-      color: var(--muted);
-      margin-top: 0;
-    }
-
-    .mini-list {
-      display: grid;
-      gap: 0.9rem;
-      margin-top: 1.2rem;
-    }
-
-    .mini-item {
-      padding: 1rem;
-      background: rgba(2, 6, 23, 0.35);
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      border-radius: 16px;
-    }
-
-    .mini-item strong {
-      display: block;
-      margin-bottom: 0.3rem;
-      color: var(--text);
+    .signal-row span {
+      padding: 0.38rem 0.58rem;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.09);
     }
 
     section {
-      padding: 1rem 0 4rem;
+      padding: 4.8rem 0;
+    }
+
+    .band-white {
+      background: var(--paper);
+    }
+
+    .band-ink {
+      color: white;
+      background: var(--charcoal);
     }
 
     .section-header {
-      max-width: 720px;
-      margin-bottom: 1.6rem;
+      max-width: 760px;
+      margin-bottom: 1.8rem;
     }
 
-    .section-header p {
+    .section-kicker {
+      margin: 0 0 0.5rem;
+      color: var(--coral);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .band-ink .section-kicker {
+      color: #f6bd9d;
+    }
+
+    .section-header h2,
+    .cta h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .section-header p,
+    .cta p {
+      margin: 0.9rem 0 0;
       color: var(--muted);
-      margin: 0.3rem 0 0;
+      font-size: 1.05rem;
     }
 
-    .services,
-    .projects,
-    .problems,
-    .contact-grid {
+    .band-ink .section-header p,
+    .band-ink .card p,
+    .band-ink .muted {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .grid {
       display: grid;
-      gap: 1.2rem;
+      gap: 1rem;
     }
 
-    .services {
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .projects {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .problems {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .contact-grid {
-      grid-template-columns: 1.1fr 0.9fr;
-    }
-
     .card {
-      background: rgba(15, 23, 42, 0.88);
+      background: var(--paper);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 1.4rem;
+      padding: 1.35rem;
+      box-shadow: 0 10px 28px rgba(24, 33, 31, 0.06);
+    }
+
+    .band-ink .card {
+      color: white;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow: none;
     }
 
     .card h3 {
-      margin-top: 0;
-      font-size: 1.15rem;
+      margin: 0;
+      font-size: 1.16rem;
+      line-height: 1.2;
     }
 
-    .card p,
-    .card li {
+    .card p {
+      margin: 0.7rem 0 0;
       color: var(--muted);
     }
 
-    .project-image {
-      width: 100%;
-      border-radius: 16px;
-      margin-bottom: 1rem;
+    .number {
+      display: inline-grid;
+      place-items: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-bottom: 0.9rem;
+      border-radius: 6px;
+      background: var(--sage);
+      color: var(--teal-dark);
+      font-weight: 900;
+    }
+
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transform: translateY(-2.2rem);
+    }
+
+    .stat {
+      padding: 1.2rem;
+      border-right: 1px solid var(--line);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat strong {
       display: block;
+      color: var(--teal-dark);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 0.4rem;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .service-card {
+      min-height: 100%;
+      border-top: 4px solid var(--teal);
+    }
+
+    .service-card:nth-child(2),
+    .service-card:nth-child(5) {
+      border-top-color: var(--coral);
+    }
+
+    .service-card:nth-child(3),
+    .service-card:nth-child(6) {
+      border-top-color: var(--gold);
     }
 
     .tag-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.55rem;
+      gap: 0.45rem;
       margin-top: 1rem;
     }
 
     .tag {
       display: inline-flex;
-      padding: 0.4rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.12);
-      color: #bae6fd;
-      font-size: 0.86rem;
-      border: 1px solid rgba(56, 189, 248, 0.2);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 0.28rem 0.48rem;
+      color: var(--teal-dark);
+      background: #f8fbf7;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .feature-split {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .profile-block {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 1.2rem;
+      align-items: center;
+      padding: 1.2rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-block img {
+      width: 160px;
+      height: 160px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      object-position: center 18%;
+    }
+
+    .profile-block h3 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    .profile-block p {
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+    }
+
+    .check-list {
+      display: grid;
+      gap: 0.75rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 1.55rem;
+      color: var(--muted);
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.58rem;
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 2px;
+      background: var(--teal);
+    }
+
+    .project-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-bottom: 1px solid var(--line);
+      background: #e7ece8;
+    }
+
+    .project-body {
+      padding: 1.35rem;
     }
 
     .project-meta {
       display: flex;
-      gap: 0.7rem;
       flex-wrap: wrap;
+      gap: 0.7rem;
       margin-top: 1rem;
     }
 
     .project-link {
-      color: #a5f3fc;
-      font-weight: 700;
+      color: var(--teal-dark);
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
     }
 
-    .about {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 1.2rem;
+    .plans {
       align-items: stretch;
     }
 
-    .about-photo {
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      background: rgba(15, 23, 42, 0.88);
+    .plan-card {
       display: flex;
       flex-direction: column;
       min-height: 100%;
     }
 
-    .about-photo-image {
+    .plan-card strong {
+      display: block;
+      margin-top: 1rem;
+      color: var(--teal-dark);
+      font-size: 1.1rem;
+    }
+
+    .plan-card .button {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    .video-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .video-frame {
+      position: relative;
       width: 100%;
-      height: 370px;
-      object-fit: cover;
-      object-position: center 18%;
-      display: block;
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #111;
+      border: 1px solid var(--line);
+      margin-top: 1rem;
     }
 
-    .about-photo-content {
-      padding: 1.6rem;
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.88));
-    }
-
-    .about-photo-content strong {
-      display: block;
-      font-size: 1.35rem;
-      color: var(--text);
-      margin-bottom: 0.8rem;
-    }
-
-    .about-photo-content p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .about-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .about-card h2 {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      font-size: clamp(1.9rem, 3vw, 2.4rem);
-    }
-
-    .about-card p {
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-    }
-
-    .about-points {
-      display: grid;
-      gap: 0.85rem;
-      margin-top: 0.6rem;
-    }
-
-    .about-point {
-      padding: 0.95rem 1rem;
-      border-radius: 16px;
-      background: rgba(2, 6, 23, 0.35);
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      color: var(--muted);
-    }
-
-    .about-point strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 0.2rem;
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     .cta {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(96, 165, 250, 0.08));
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      border-radius: 28px;
-      padding: 1.8rem;
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 2rem;
+      align-items: start;
+      padding: 2rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .field label {
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0.85rem;
+      color: var(--ink);
+      background: #fbfcfa;
+    }
+
+    .field textarea {
+      min-height: 135px;
+      resize: vertical;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .form-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
     }
 
     .contact-links {
       display: grid;
-      gap: 0.8rem;
+      gap: 0.65rem;
+      margin-top: 1.5rem;
     }
 
     .contact-links a {
       display: block;
-      padding: 0.95rem 1rem;
-      border-radius: 16px;
-      background: rgba(2, 6, 23, 0.35);
-      border: 1px solid rgba(148, 163, 184, 0.14);
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--teal-dark);
+      font-weight: 900;
     }
-footer {
-      padding: 1.5rem 0 3rem;
+
+    footer {
+      padding: 1.4rem 0 3rem;
       color: var(--muted);
+      background: var(--paper);
+      border-top: 1px solid var(--line);
       font-size: 0.94rem;
     }
 
-    @media (max-width: 1100px) {
-      .services {
+    @media (max-width: 1050px) {
+      .grid-4,
+      .video-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stat-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .stat:nth-child(1),
+      .stat:nth-child(2) {
+        border-bottom: 1px solid var(--line);
       }
     }
 
-    @media (max-width: 900px) {
-      .hero-grid,
-      .projects,
-      .problems,
-      .contact-grid,
-      .about {
-        grid-template-columns: 1fr;
-      }
-
-      .video-grid {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 860px) {
       .nav-inner {
-        flex-direction: column;
         align-items: flex-start;
+        flex-direction: column;
+        padding: 0.9rem 0;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        min-height: 72svh;
+        background:
+          linear-gradient(90deg, rgba(16, 26, 24, 0.92), rgba(16, 26, 24, 0.72)),
+          url("sold3x-preview.png") center / cover no-repeat;
       }
 
       h1 {
         max-width: 100%;
       }
 
-      .about-photo-image {
-        height: 320px;
+      .grid-2,
+      .grid-3,
+      .feature-split,
+      .cta {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 640px) {
-      .hero {
-        padding-top: 4.5rem;
+      .container {
+        width: min(100% - 1.1rem, var(--max));
       }
 
-      .nav-links {
-        gap: 0.7rem;
+      section {
+        padding: 3.4rem 0;
       }
 
-      .services {
+      .hero-content {
+        padding: 4rem 0;
+      }
+
+      .grid-4,
+      .video-grid,
+      .stat-strip,
+      .form-grid,
+      .profile-block {
         grid-template-columns: 1fr;
       }
 
-      .hero-profile {
-        flex-direction: column;
-        align-items: flex-start;
+      .stat {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
       }
 
-      .hero-avatar-wrap {
-        width: 120px;
-        height: 120px;
-        border-radius: 20px;
+      .stat:last-child {
+        border-bottom: 0;
       }
 
-      .hero-name {
-        font-size: 1.8rem;
+      .profile-block img {
+        width: 100%;
+        height: 260px;
       }
 
-      .hero-role {
-        font-size: 1rem;
+      .button {
+        width: 100%;
       }
 
-      .about-photo-image {
-        height: 280px;
+      .project-meta,
+      .hero-actions,
+      .actions {
+        width: 100%;
       }
     }
   </style>
@@ -526,12 +720,15 @@ footer {
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <a href="#top" class="brand">Benedick Tiaga</a>
-      <nav class="nav-links">
+      <a href="#top" class="brand">
+        Benedick Tiaga
+        <small>Digital operations support</small>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#video-portfolio">Videos</a>
-        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#plans">Engagements</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -539,396 +736,439 @@ footer {
 
   <main id="top">
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="hero-profile">
-            <div class="hero-avatar-wrap">
-              <img src="Profile.JPG" alt="Benedick Tiaga" class="hero-avatar" />
-            </div>
-            <div class="hero-name-block">
-              <p class="hero-name">Benedick Tiaga</p>
-              <p class="hero-role">Web Development, Automation, Backend Support, and Short Form Video Editing</p>
-            </div>
-          </div>
-
-          <span class="eyebrow">Available for freelance and contract projects</span>
-          <h1>I help businesses save time with cleaner websites and smoother workflows.</h1>
-          <p>
-            I work with business owners, agencies, and growing teams that need reliable non voice support.
-            From website updates and landing pages to lead flow automation, backend tasks, and short form video editing, I help keep things moving behind the scenes.
+      <div class="container">
+        <div class="hero-content">
+          <p class="eyebrow">For business owners, agencies, and growing teams</p>
+          <h1>Digital operations support for growing businesses.</h1>
+          <p class="hero-copy">
+            I help companies hand off the digital work that slows them down: website updates, landing pages, lead flow automation, backend admin, documentation, and short-form content support.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#contact">Work With Me</a>
-            <a class="button button-secondary" href="#projects">See My Work</a>
+            <a class="button button-primary" href="#contact">Start a Project</a>
+            <a class="button button-secondary" href="#services">Explore Services</a>
           </div>
-          <div class="trust-row">
-            <span>Open to US, CA, EU, and AU clients</span>
-            <span>Websites, automation, backend systems, and content support</span>
-            <span>Freelance and contract ready</span>
+          <div class="signal-row" aria-label="Service highlights">
+            <span>Websites</span>
+            <span>Automation</span>
+            <span>Backend support</span>
+            <span>Short-form content</span>
           </div>
         </div>
-
-        <aside class="panel summary-card">
-          <h2>What I can help with</h2>
-          <p>
-            Practical support for businesses that want better systems without adding more manual work.
-          </p>
-          <div class="mini-list">
-            <div class="mini-item">
-              <strong>Web development</strong>
-              Landing pages, website updates, and clean front end improvements.
-            </div>
-            <div class="mini-item">
-              <strong>Automation</strong>
-              Connect forms, email, spreadsheets, and CRM tools to reduce repetitive work.
-            </div>
-            <div class="mini-item">
-              <strong>Backend support</strong>
-              Content uploads, data cleanup, documentation, and admin workflows.
-            </div>
-            <div class="mini-item">
-              <strong>Video editing support</strong>
-              CapCut editing for short form videos, TikTok posts, Reels, captions, cuts, and simple social media content.
-            </div>
-          </div>
-        </aside>
       </div>
     </section>
 
-    <section id="services">
+    <div class="container">
+      <div class="stat-strip" aria-label="Business focus">
+        <div class="stat">
+          <strong>1</strong>
+          <span>Reliable point of contact for digital support</span>
+        </div>
+        <div class="stat">
+          <strong>4</strong>
+          <span>Core service areas for daily business needs</span>
+        </div>
+        <div class="stat">
+          <strong>24/7</strong>
+          <span>Live web presence through GitHub Pages and hosted projects</span>
+        </div>
+        <div class="stat">
+          <strong>Long term</strong>
+          <span>Built to grow into an outsourcing support team</span>
+        </div>
+      </div>
+    </div>
+
+    <section id="services" class="band-white">
       <div class="container">
         <div class="section-header">
-          <h2>Services</h2>
+          <p class="section-kicker">Services</p>
+          <h2>Give your team more time by handing off practical digital work.</h2>
           <p>
-            Focused support that helps businesses stay organized, save time, and improve how work gets done.
+            The goal is simple: make your website, lead handling, content tasks, and backend systems easier to manage without hiring a full in-house team.
           </p>
         </div>
 
-        <div class="services">
-          <article class="card">
+        <div class="grid grid-3">
+          <article class="card service-card">
             <h3>Website updates and landing pages</h3>
-            <p>
-              Build or improve pages that look clean, work well on mobile, and guide visitors toward taking action.
-            </p>
+            <p>Clean, mobile-friendly pages for offers, services, campaigns, and ongoing site improvements.</p>
             <div class="tag-row">
               <span class="tag">HTML</span>
               <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
               <span class="tag">WordPress</span>
+              <span class="tag">GitHub Pages</span>
             </div>
           </article>
 
-          <article class="card">
-            <h3>Automation for repetitive tasks</h3>
-            <p>
-              Help reduce manual work by connecting forms, spreadsheets, email, and CRM processes into a smoother flow.
-            </p>
+          <article class="card service-card">
+            <h3>Lead flow and CRM support</h3>
+            <p>Organize how inquiries move from forms, spreadsheets, inboxes, and CRM tools into follow-up workflows.</p>
             <div class="tag-row">
-              <span class="tag">Lead Flow</span>
+              <span class="tag">Forms</span>
               <span class="tag">CRM</span>
-              <span class="tag">Google Sheets</span>
-              <span class="tag">Process Setup</span>
+              <span class="tag">Follow-up</span>
+              <span class="tag">Sheets</span>
             </div>
           </article>
 
-          <article class="card">
-            <h3>Backend and admin support</h3>
-            <p>
-              Keep operations moving with content uploads, data cleanup, SOP creation, and dependable day to day support.
-            </p>
+          <article class="card service-card">
+            <h3>Workflow automation</h3>
+            <p>Reduce repetitive manual steps by connecting tools, creating simple automations, and documenting the flow.</p>
             <div class="tag-row">
-              <span class="tag">Documentation</span>
-              <span class="tag">Data Cleanup</span>
-              <span class="tag">Backend Tasks</span>
-              <span class="tag">Non Voice Support</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Admin systems</span>
+              <span class="tag">Process setup</span>
             </div>
           </article>
 
-          <article class="card">
-            <h3>Short form video editing</h3>
-            <p>
-              Edit simple and engaging short form videos for TikTok, Reels, and business content using CapCut.
-            </p>
+          <article class="card service-card">
+            <h3>Backend admin support</h3>
+            <p>Support for content uploads, data cleanup, task tracking, SOPs, documentation, and operations cleanup.</p>
+            <div class="tag-row">
+              <span class="tag">Data cleanup</span>
+              <span class="tag">SOPs</span>
+              <span class="tag">Documentation</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <h3>Short-form content support</h3>
+            <p>CapCut editing, captioned short videos, TikTok and Reels preparation, and simple social media content support.</p>
             <div class="tag-row">
               <span class="tag">CapCut</span>
               <span class="tag">TikTok</span>
               <span class="tag">Reels</span>
-              <span class="tag">Social Media</span>
+              <span class="tag">Captions</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <h3>Outsourcing support setup</h3>
+            <p>Help shape repeatable workflows, task handoff systems, and service delivery processes that can scale over time.</p>
+            <div class="tag-row">
+              <span class="tag">Handoff</span>
+              <span class="tag">Operations</span>
+              <span class="tag">Remote support</span>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="container">
+    <section class="band-ink">
+      <div class="container feature-split">
         <div class="section-header">
-          <h2>Problems I help solve</h2>
+          <p class="section-kicker">Outcomes</p>
+          <h2>Built for the work that usually gets delayed.</h2>
           <p>
-            Businesses usually reach out when daily work starts taking more time than it should.
+            Most businesses do not need more meetings. They need someone reliable who can clean up pages, connect tools, prepare content, and keep backend tasks moving.
           </p>
         </div>
 
-        <div class="problems">
+        <div class="grid grid-2">
           <article class="card">
-            <h3>Outdated or hard to manage website</h3>
-            <p>
-              I help clean up pages, improve structure, and make websites easier to update and maintain.
-            </p>
+            <h3>Fewer manual steps</h3>
+            <p>Turn repetitive tasks into cleaner flows that are easier to track and repeat.</p>
           </article>
-
           <article class="card">
-            <h3>Messy lead handling process</h3>
-            <p>
-              If leads are coming in but the follow up flow is unclear, I help make the process more organized.
-            </p>
+            <h3>Better client intake</h3>
+            <p>Make it easier for prospects to reach out, explain their needs, and move into follow-up.</p>
           </article>
-
           <article class="card">
-            <h3>Too much manual admin work</h3>
-            <p>
-              I help reduce repetitive steps so teams can spend more time on sales, service, and growth.
-            </p>
+            <h3>Cleaner online presence</h3>
+            <p>Keep service pages, project examples, links, and content updated across your digital channels.</p>
           </article>
-
           <article class="card">
-            <h3>Need dependable content support</h3>
-            <p>
-              I help with behind the scenes content tasks like simple video edits, social media preparation, uploads, and support work.
-            </p>
+            <h3>More dependable execution</h3>
+            <p>Support for the behind-the-scenes work that keeps operations from getting stuck.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="projects">
+    <section id="work" class="band-white">
       <div class="container">
         <div class="section-header">
-          <h2>Featured projects</h2>
+          <p class="section-kicker">Featured work</p>
+          <h2>Project examples that show the direction of the service.</h2>
           <p>
-            A few examples of the kind of work I help clients with, focused on lead generation, business operations, content support, and dependable backend execution.
+            These projects combine web presence, operational thinking, lead capture, and backend workflows.
           </p>
         </div>
 
-        <div class="projects">
-          <article class="card">
-            <h3>SOLD3X website</h3>
+        <div class="grid grid-2">
+          <article class="card project-card">
             <img src="sold3x-preview.png" alt="SOLD3X website preview" class="project-image" />
-            <p>
-              Lead generation website for a real estate brand focused on seller inquiries. Built to create a smoother user journey, capture leads through forms and quiz flows, and send submissions into Follow Up Boss through API based workflows.
-            </p>
-            <div class="tag-row">
-              <span class="tag">Real Estate Website</span>
-              <span class="tag">Lead Capture</span>
-              <span class="tag">Follow Up Boss</span>
-            </div>
-            <div class="project-meta">
-              <a class="project-link" href="https://sold3x.com/" target="_blank" rel="noreferrer">View live site</a>
-              <span class="project-link">Screenshots and walkthrough available on request</span>
+            <div class="project-body">
+              <h3>SOLD3X website</h3>
+              <p>
+                Lead generation website for a real estate brand focused on seller inquiries, form paths, quiz flows, and Follow Up Boss API workflows.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Real estate</span>
+                <span class="tag">Lead capture</span>
+                <span class="tag">CRM workflow</span>
+              </div>
+              <div class="project-meta">
+                <a class="project-link" href="https://sold3x.com/" target="_blank" rel="noreferrer">View live site</a>
+              </div>
             </div>
           </article>
 
-          <article class="card">
-            <h3>Cup of Joy app</h3>
+          <article class="card project-card">
             <img src="cupofjoy-preview.png" alt="Cup of Joy app preview" class="project-image" />
-            <p>
-              Operations focused web app concept for a food and beverage business. Designed to support attendance tracking, QR based check in, payroll logic, and POS workflows to make daily staff management more efficient.
-            </p>
-            <div class="tag-row">
-              <span class="tag">Operations App</span>
-              <span class="tag">Attendance</span>
-              <span class="tag">POS Workflow</span>
-            </div>
-            <div class="project-meta">
-              <a class="project-link" href="https://cupofjoy2506.netlify.app/" target="_blank" rel="noreferrer">View live app</a>
-              <span class="project-link">Screenshots and walkthrough available on request</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3>CapCut video editing portfolio</h3>
-            <p>
-              Short form video editing samples created for social media content, including TikTok style videos, captions, simple cuts, music, and business focused edits.
-            </p>
-            <div class="tag-row">
-              <span class="tag">CapCut</span>
-              <span class="tag">Short Form Video</span>
-              <span class="tag">TikTok Content</span>
-              <span class="tag">Social Media Editing</span>
-            </div>
-            <div class="project-meta">
-              <a class="project-link" href="https://drive.google.com/drive/folders/1fmans5gNw53YbxwpnD1k7UHuvRw8RaM8?usp=sharing" target="_blank" rel="noreferrer">View video portfolio</a>
-              <a class="project-link" href="https://www.tiktok.com/@dendentiaga/video/7407184523420601608?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">TikTok sample 1</a>
-              <a class="project-link" href="https://www.tiktok.com/@dendentiaga/video/7575204365863079188?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">TikTok sample 2</a>
-              <a class="project-link" href="https://www.tiktok.com/@dendentiaga/video/7398865055774772487?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">TikTok sample 3</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3>Website updates and maintenance support</h3>
-            <p>
-              Ongoing page edits, content updates, structure improvements, and backend support to keep websites polished, current, and easier to manage.
-            </p>
-            <div class="tag-row">
-              <span class="tag">WordPress</span>
-              <span class="tag">Content Updates</span>
-              <span class="tag">Maintenance</span>
-            </div>
-            <div class="project-meta">
-              <span class="project-link">More examples available on request</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3>Backend support and process organization</h3>
-            <p>
-              Support work focused on cleaning data, organizing workflows, documenting SOPs, and keeping business operations moving behind the scenes.
-            </p>
-            <div class="tag-row">
-              <span class="tag">Backend Support</span>
-              <span class="tag">Data Cleanup</span>
-              <span class="tag">SOPs</span>
-            </div>
-            <div class="project-meta">
-              <span class="project-link">More examples available on request</span>
+            <div class="project-body">
+              <h3>Cup of Joy operations app</h3>
+              <p>
+                Web app concept for food and beverage operations, including attendance tracking, QR check-in, payroll logic, and POS workflow planning.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Operations</span>
+                <span class="tag">Attendance</span>
+                <span class="tag">POS workflow</span>
+              </div>
+              <div class="project-meta">
+                <a class="project-link" href="https://cupofjoy2506.netlify.app/" target="_blank" rel="noreferrer">View live app</a>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="video-portfolio">
+    <section id="process">
       <div class="container">
         <div class="section-header">
-          <h2>Video Editing Portfolio</h2>
+          <p class="section-kicker">Process</p>
+          <h2>A simple way to start, improve, and keep work moving.</h2>
           <p>
-            Short form video samples edited for TikTok, Reels, and social media content using CapCut.
+            The process is designed for business owners who want momentum without making the project complicated.
           </p>
         </div>
 
-        <div class="video-grid">
-          <article class="card video-card">
-            <h3>Video Sample 1</h3>
+        <div class="grid grid-4">
+          <article class="card">
+            <span class="number">1</span>
+            <h3>Map the need</h3>
+            <p>Clarify what is slowing the business down and what result would make the biggest difference first.</p>
+          </article>
+          <article class="card">
+            <span class="number">2</span>
+            <h3>Build or clean up</h3>
+            <p>Update the page, workflow, system, content, or backend process with a clear scope.</p>
+          </article>
+          <article class="card">
+            <span class="number">3</span>
+            <h3>Document the flow</h3>
+            <p>Leave the setup easier to understand, repeat, and hand off as the business grows.</p>
+          </article>
+          <article class="card">
+            <span class="number">4</span>
+            <h3>Support ongoing work</h3>
+            <p>Continue with updates, admin tasks, content help, and operational support when needed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="band-white">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Engagement options</p>
+          <h2>Start with one project or build toward ongoing support.</h2>
+          <p>
+            This keeps the offer flexible today while supporting the long-term agency direction.
+          </p>
+        </div>
+
+        <div class="grid grid-3 plans">
+          <article class="card plan-card">
+            <h3>Project sprint</h3>
+            <p>Best for one website update, landing page, automation cleanup, or content support push.</p>
+            <strong>Clear scope, clear delivery</strong>
+            <div class="actions">
+              <a class="button button-outline" href="#contact">Ask About a Sprint</a>
+            </div>
+          </article>
+
+          <article class="card plan-card">
+            <h3>Monthly support</h3>
+            <p>Best for businesses that need ongoing web edits, backend admin, workflow help, and content preparation.</p>
+            <strong>Flexible recurring support</strong>
+            <div class="actions">
+              <a class="button button-outline" href="#contact">Ask About Support</a>
+            </div>
+          </article>
+
+          <article class="card plan-card">
+            <h3>Outsourcing partner</h3>
+            <p>Best for agencies or teams that want reliable remote support across repeatable digital operations tasks.</p>
+            <strong>Built for long-term growth</strong>
+            <div class="actions">
+              <a class="button button-outline" href="#contact">Discuss Partnership</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container feature-split">
+        <div class="profile-block">
+          <img src="Profile.JPG" alt="Benedick Tiaga" />
+          <div>
+            <h3>Benedick Tiaga</h3>
+            <p>
+              A practical digital support partner focused on websites, automation, backend operations, and short-form content support.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-header">
+            <p class="section-kicker">About</p>
+            <h2>Starting as a solo operator, building toward an outsourcing agency.</h2>
+            <p>
+              I work with business owners and teams that need dependable execution behind the scenes. The long-term goal is to grow this into a support agency that helps clients with the digital work they do not have time to manage internally.
+            </p>
+          </div>
+          <ul class="check-list">
+            <li>Reliable support for non-voice digital operations work.</li>
+            <li>Systems thinking for websites, workflows, admin tasks, and content processes.</li>
+            <li>Flexible enough for one-off projects, recurring support, or agency-style partnerships.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos" class="band-white">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Content support</p>
+          <h2>Short-form video samples.</h2>
+          <p>
+            CapCut editing samples for TikTok, Reels, and simple social content preparation.
+          </p>
+        </div>
+
+        <div class="grid video-grid">
+          <article class="card">
+            <h3>Video sample 1</h3>
             <div class="video-frame">
               <iframe
+                title="Video sample 1"
                 src="https://drive.google.com/file/d/1gi9rqjdLbcXXU3y0b8x8Csk2B4RU_7uC/preview"
                 allow="autoplay; encrypted-media"
                 allowfullscreen>
               </iframe>
             </div>
             <div class="project-meta">
-              <a class="project-link" href="https://drive.google.com/file/d/1gi9rqjdLbcXXU3y0b8x8Csk2B4RU_7uC/view?usp=drive_link" target="_blank" rel="noreferrer">Open in Google Drive</a>
+              <a class="project-link" href="https://drive.google.com/file/d/1gi9rqjdLbcXXU3y0b8x8Csk2B4RU_7uC/view?usp=drive_link" target="_blank" rel="noreferrer">Open in Drive</a>
               <a class="project-link" href="https://www.tiktok.com/@dendentiaga/video/7407184523420601608?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">Open on TikTok</a>
             </div>
           </article>
 
-          <article class="card video-card">
-            <h3>Video Sample 2</h3>
+          <article class="card">
+            <h3>Video sample 2</h3>
             <div class="video-frame">
               <iframe
+                title="Video sample 2"
                 src="https://drive.google.com/file/d/1tPtLhTdmzS_GYp5F6NtEQr49sVKVMu3X/preview"
                 allow="autoplay; encrypted-media"
                 allowfullscreen>
               </iframe>
             </div>
             <div class="project-meta">
-              <a class="project-link" href="https://drive.google.com/file/d/1tPtLhTdmzS_GYp5F6NtEQr49sVKVMu3X/view?usp=drive_link" target="_blank" rel="noreferrer">Open in Google Drive</a>
+              <a class="project-link" href="https://drive.google.com/file/d/1tPtLhTdmzS_GYp5F6NtEQr49sVKVMu3X/view?usp=drive_link" target="_blank" rel="noreferrer">Open in Drive</a>
               <a class="project-link" href="https://www.tiktok.com/@dendentiaga/video/7575204365863079188?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">Open on TikTok</a>
             </div>
           </article>
 
-          <article class="card video-card">
-            <h3>Video Sample 3</h3>
+          <article class="card">
+            <h3>Video sample 3</h3>
             <div class="video-frame">
               <iframe
+                title="Video sample 3"
                 src="https://drive.google.com/file/d/12cDEbtXUQYNLcBXA1Ikk82bIr3yfT1Gd/preview"
                 allow="autoplay; encrypted-media"
                 allowfullscreen>
               </iframe>
             </div>
             <div class="project-meta">
-              <a class="project-link" href="https://drive.google.com/file/d/12cDEbtXUQYNLcBXA1Ikk82bIr3yfT1Gd/view?usp=drive_link" target="_blank" rel="noreferrer">Open in Google Drive</a>
+              <a class="project-link" href="https://drive.google.com/file/d/12cDEbtXUQYNLcBXA1Ikk82bIr3yfT1Gd/view?usp=drive_link" target="_blank" rel="noreferrer">Open in Drive</a>
               <a class="project-link" href="https://www.tiktok.com/@dendentiaga/video/7398865055774772487?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">Open on TikTok</a>
             </div>
           </article>
         </div>
 
-        <div class="hero-actions" style="margin-top: 1.5rem;">
-          <a class="button button-primary" href="https://drive.google.com/drive/folders/1fmans5gNw53YbxwpnD1k7UHuvRw8RaM8?usp=sharing" target="_blank" rel="noreferrer">View Full Video Portfolio</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container about">
-        <div class="about-photo">
-          <img src="Profile.JPG" alt="Benedick Tiaga" class="about-photo-image" />
-          <div class="about-photo-content">
-            <strong>What I bring</strong>
-            <p>
-              Practical execution, strong organization, and reliable support for websites, workflows, backend operations, and simple content editing needs.
-            </p>
-          </div>
-        </div>
-
-        <div class="card about-card">
-          <h2>About me</h2>
-          <p>
-            Hi, I’m Benedick. I help businesses save time through web development, automation, backend support, and short form video editing.
-            My work focuses on practical systems and support tasks that make daily operations easier, cleaner, and more efficient.
-          </p>
-          <p>
-            I work best with business owners, agencies, and growing teams that need dependable execution behind the scenes without constant calls or unnecessary back and forth.
-          </p>
-
-          <div class="about-points">
-            <div class="about-point">
-              <strong>Reliable execution</strong>
-              Dependable support for projects, tasks, and ongoing business operations.
-            </div>
-            <div class="about-point">
-              <strong>Systems thinking</strong>
-              I look for ways to make workflows cleaner, simpler, and easier to manage.
-            </div>
-            <div class="about-point">
-              <strong>Content support</strong>
-              I can also help prepare simple short form videos and social media content so teams can stay consistent online.
-            </div>
-            <div class="about-point">
-              <strong>Client focused</strong>
-              I build with the goal of saving time, reducing friction, and helping clients move faster.
-            </div>
-          </div>
+        <div class="actions">
+          <a class="button button-outline" href="https://drive.google.com/drive/folders/1fmans5gNw53YbxwpnD1k7UHuvRw8RaM8?usp=sharing" target="_blank" rel="noreferrer">View Full Video Portfolio</a>
         </div>
       </div>
     </section>
 
     <section id="contact">
-      <div class="container contact-grid">
+      <div class="container">
         <div class="cta">
-          <h2>Need help with your website, workflow, backend tasks, or content support?</h2>
-          <p>
-            If you need dependable support for web development, automation, short form video editing, or behind the scenes business tasks, let’s connect.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="mailto:benedick.tiaga04@gmail.com">Email Me</a>
-            <a class="button button-secondary" href="https://www.linkedin.com/in/benedick-tiaga-jr-51b253248/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a class="button button-secondary" href="https://drive.google.com/drive/folders/1fmans5gNw53YbxwpnD1k7UHuvRw8RaM8?usp=sharing" target="_blank" rel="noreferrer">Video Portfolio</a>
+          <div>
+            <p class="section-kicker">Contact</p>
+            <h2>Tell me what your business needs help with.</h2>
+            <p>
+              Share the task, workflow, or business problem you want handled. I will review it and reply with the best next step.
+            </p>
+            <div class="contact-links">
+              <a href="mailto:benedick.tiaga04@gmail.com">benedick.tiaga04@gmail.com</a>
+              <a href="https://www.linkedin.com/in/benedick-tiaga-jr-51b253248/" target="_blank" rel="noreferrer">LinkedIn profile</a>
+              <a href="https://github.com/SyakNiPrimo" target="_blank" rel="noreferrer">GitHub profile</a>
+              <a href="https://www.threads.com/@benedicktiaga" target="_blank" rel="noreferrer">Threads profile</a>
+            </div>
           </div>
-        </div>
 
-        <div class="card">
-          <h3>Contact links</h3>
-          <div class="contact-links">
-            <a href="mailto:benedick.tiaga04@gmail.com">Email: benedick.tiaga04@gmail.com</a>
-            <a href="https://www.linkedin.com/in/benedick-tiaga-jr-51b253248/" target="_blank" rel="noreferrer">LinkedIn profile</a>
-            <a href="https://github.com/SyakNiPrimo" target="_blank" rel="noreferrer">GitHub profile</a>
-            <a href="https://www.threads.com/@benedicktiaga" target="_blank" rel="noreferrer">Threads profile</a>
-            <a href="https://drive.google.com/drive/folders/1fmans5gNw53YbxwpnD1k7UHuvRw8RaM8?usp=sharing" target="_blank" rel="noreferrer">Video editing portfolio</a>
-            <a href="https://www.tiktok.com/@dendentiaga/video/7407184523420601608?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">TikTok video sample 1</a>
-            <a href="https://www.tiktok.com/@dendentiaga/video/7575204365863079188?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">TikTok video sample 2</a>
-            <a href="https://www.tiktok.com/@dendentiaga/video/7398865055774772487?is_from_webapp=1&sender_device=pc&web_id=7290683253283243527" target="_blank" rel="noreferrer">TikTok video sample 3</a>
-          </div>
+          <form class="contact-form" id="inquiry-form">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="service">Service needed</label>
+                <select id="service" name="service" required>
+                  <option value="">Select a service</option>
+                  <option>Website or landing page</option>
+                  <option>Automation or workflow cleanup</option>
+                  <option>Backend admin support</option>
+                  <option>Short-form video editing</option>
+                  <option>Ongoing outsourcing support</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="timeline">Timeline</label>
+                <select id="timeline" name="timeline" required>
+                  <option value="">Select a timeline</option>
+                  <option>ASAP</option>
+                  <option>This week</option>
+                  <option>This month</option>
+                  <option>Planning ahead</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="message">What do you need help with?</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button class="button button-primary" type="submit">Prepare Inquiry Email</button>
+            <p class="form-note">This opens your email app with the project details filled in.</p>
+          </form>
         </div>
       </div>
     </section>
@@ -936,12 +1176,34 @@ footer {
 
   <footer>
     <div class="container">
-      © <span id="year"></span> Benedick Tiaga. Built for GitHub Pages.
+      <span id="year"></span> Benedick Tiaga. Built for GitHub Pages.
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('inquiry-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const form = event.currentTarget;
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const service = form.service.value;
+      const timeline = form.timeline.value;
+      const message = form.message.value.trim();
+
+      const subject = encodeURIComponent('Business support inquiry from ' + name);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Service needed: ' + service + '\n' +
+        'Timeline: ' + timeline + '\n\n' +
+        'Project details:\n' + message
+      );
+
+      window.location.href = 'mailto:benedick.tiaga04@gmail.com?subject=' + subject + '&body=' + body;
+    });
   </script>
 </body>
 </html>
