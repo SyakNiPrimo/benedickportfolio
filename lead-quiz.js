@@ -11,14 +11,14 @@
             <p class="quiz-kicker" data-quiz-step-label>Step 1 of 6</p>
             <h2 id="quiz-title">Find the right support path.</h2>
           </div>
-          <button class="quiz-close" type="button" aria-label="Close inquiry quiz" data-quiz-close>X</button>
+          <button class="quiz-close" type="button" aria-label="Close inquiry" data-quiz-close>X</button>
         </div>
         <form class="quiz-form" action="${inquiryUrl}" method="POST" novalidate>
           <input type="hidden" name="_subject" value="New qualified business support inquiry from website" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_next" value="${bookingUrl}" />
-          <input type="hidden" name="lead_source" value="Website popup quiz" />
+          <input type="hidden" name="lead_source" value="Website guided inquiry" />
           <input type="hidden" name="lead_status" value="New website inquiry" />
           <input class="hidden-field" type="text" name="_honey" tabindex="-1" autocomplete="off" />
 
