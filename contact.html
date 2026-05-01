@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Start Inquiry | Benedick Tiaga</title>
-  <meta name="description" content="Start a guided business support inquiry before booking a discovery call for website, automation, backend, content, or outsourcing support." />
-  <meta property="og:title" content="Start Inquiry | Benedick Tiaga" />
-  <meta property="og:description" content="Complete a focused guided inquiry first, then choose whether to book a discovery call." />
+  <title>Start Project Inquiry | Benedick Tiaga</title>
+  <meta name="description" content="Start a project inquiry for website updates, landing pages, CRM support, workflow automation, backend admin support, outsourcing setup, and short form content support." />
+  <meta property="og:title" content="Start Project Inquiry | Benedick Tiaga" />
+  <meta property="og:description" content="Share project details before booking a discovery call so Benedick can review your needs first." />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="styles.css" />
-  <script src="lead-quiz.js" defer></script>
 </head>
 <body>
   <header class="nav">
@@ -21,114 +20,152 @@
           <small>Digital operations partner</small>
         </span>
       </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="services.html">Services</a>
-        <a href="work.html">Work</a>
-        <a href="about.html">About</a>
-        <a href="contact.html" class="nav-cta" aria-current="page">Start Inquiry</a>
-        <span class="nav-status">Available for new clients</span>
-      </nav>
+      <nav class="nav-links" aria-label="Primary navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html" class="nav-cta" aria-current="page">Start Project Inquiry</a><a href="contact.html#contact-details">Contact</a></nav>
     </div>
   </header>
 
   <main id="top">
     <section class="page-hero">
       <div class="container">
-        <p class="eyebrow">Start inquiry</p>
-        <h1>A focused inquiry before the call.</h1>
-        <p class="hero-copy">Answer a few guided questions first so I can understand your business, the support you need, and whether a website, automation, CRM, backend, or outsourcing workflow is the best next step.</p>
+        <p class="eyebrow">Project inquiry</p>
+        <h1>Start Project Inquiry</h1>
+        <p class="hero-copy">Share a few details about what you need help with. I will review your answers first so we can use our time better if a call is needed.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="contact.html">Start Inquiry</a>
+          <a class="button button-primary" href="#project-inquiry">Start Project Inquiry</a>
           <a class="button button-secondary" href="services.html">Review Services</a>
         </div>
       </div>
     </section>
 
-    <section class="band-white">
+    <section id="project-inquiry" class="band-white">
       <div class="container">
-        <div class="section-header">
-          <p class="section-kicker">How it works</p>
-          <h2>Simple for prospects, useful for follow-up.</h2>
-          <p>The inquiry flow captures the details needed to prepare before a meeting, then gives qualified prospects the option to book a 30-minute call.</p>
-        </div>
-        <div class="grid grid-3">
-          <article class="card">
-            <span class="number">1</span>
-            <h3>Complete the inquiry</h3>
-            <p>Prospects choose the service area, timeline, support type, CRM interest, and key business context.</p>
-          </article>
-          <article class="card">
-            <span class="number">2</span>
-            <h3>Details are emailed</h3>
-            <p>The submitted answers are routed to my inbox first, so the lead is captured before any meeting is booked.</p>
-          </article>
-          <article class="card">
-            <span class="number">3</span>
-            <h3>Booking comes next</h3>
-            <p>After completing the inquiry, prospects can schedule a Calendly call with their context already collected.</p>
-          </article>
+        <div class="cta intake-layout">
+          <div>
+            <p class="section-kicker">First step</p>
+            <h2>Send the details before booking.</h2>
+            <p>The project inquiry helps me understand your needs, timing, budget range, and preferred next step before a meeting is added to the calendar.</p>
+            <div class="form-summary">
+              <span>1. Share your business details</span>
+              <span>2. Choose the support you need</span>
+              <span>3. Submit before booking</span>
+            </div>
+          </div>
+
+          <!-- Future CRM routing can send this lead into HubSpot CRM, Zapier, Make, n8n, or a direct API integration. -->
+          <form class="contact-form intake-form" action="https://formsubmit.co/benedick.tiaga04@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New project inquiry from website" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://syakniprimo.github.io/benedickportfolio/thank-you.html" />
+            <input type="hidden" name="lead_source" value="Website project inquiry form" />
+            <input type="hidden" name="lead_status" value="New Inquiry" />
+            <input class="hidden-field" type="text" name="_honey" tabindex="-1" autocomplete="off" />
+
+            <!-- Suggested CRM fields include service need, urgency, budget, lead source, preferred next step, and lead status. Suggested lead statuses: New Inquiry, Reviewing Fit, Qualified Lead, Call Booked, Proposal Sent, Won, Not Fit or Follow Up Later. -->
+            <div class="form-grid">
+              <div class="field">
+                <label for="full-name">Full name</label>
+                <input id="full-name" name="full_name" type="text" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="company">Business or company name</label>
+                <input id="company" name="business_or_company_name" type="text" autocomplete="organization" required />
+              </div>
+              <div class="field">
+                <label for="website">Website or social media link</label>
+                <input id="website" name="website_or_social_media_link" type="url" placeholder="https://" />
+              </div>
+            </div>
+
+            <fieldset class="option-group" aria-labelledby="service-need-label">
+              <span id="service-need-label">What do you need help with?</span>
+              <div class="choice-list">
+                <label class="choice"><input type="checkbox" name="service_need[]" value="Website updates or landing page" />Website updates or landing page</label>
+                <label class="choice"><input type="checkbox" name="service_need[]" value="Lead flow or CRM support" />Lead flow or CRM support</label>
+                <label class="choice"><input type="checkbox" name="service_need[]" value="Workflow automation" />Workflow automation</label>
+                <label class="choice"><input type="checkbox" name="service_need[]" value="Backend admin support" />Backend admin support</label>
+                <label class="choice"><input type="checkbox" name="service_need[]" value="Short form content support" />Short form content support</label>
+                <label class="choice"><input type="checkbox" name="service_need[]" value="Outsourcing support setup" />Outsourcing support setup</label>
+                <label class="choice"><input type="checkbox" name="service_need[]" value="Not sure yet" />Not sure yet</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="option-group" aria-labelledby="situation-label">
+              <span id="situation-label">What best describes your current situation?</span>
+              <div class="choice-list">
+                <label class="choice"><input type="radio" name="current_situation" value="I need help now" required />I need help now</label>
+                <label class="choice"><input type="radio" name="current_situation" value="I am planning ahead" />I am planning ahead</label>
+                <label class="choice"><input type="radio" name="current_situation" value="I have an ongoing project" />I have an ongoing project</label>
+                <label class="choice"><input type="radio" name="current_situation" value="I need ongoing support" />I need ongoing support</label>
+                <label class="choice"><input type="radio" name="current_situation" value="I am just exploring" />I am just exploring</label>
+              </div>
+            </fieldset>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="timeline">How soon do you need support?</label>
+                <select id="timeline" name="support_timeline" required>
+                  <option value="">Select a timeline</option>
+                  <option>This week</option>
+                  <option>This month</option>
+                  <option>Within 1 to 3 months</option>
+                  <option>Just exploring</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="budget">Estimated monthly or project budget</label>
+                <select id="budget" name="estimated_budget" required>
+                  <option value="">Select a budget range</option>
+                  <option>Under $300</option>
+                  <option>$300 to $500</option>
+                  <option>$500 to $1,000</option>
+                  <option>$1,000 plus</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="project-details">Briefly describe what you need help with</label>
+              <textarea id="project-details" name="project_details" required></textarea>
+            </div>
+
+            <fieldset class="option-group" aria-labelledby="next-step-label">
+              <span id="next-step-label">Preferred next step</span>
+              <div class="choice-list">
+                <label class="choice"><input type="radio" name="preferred_next_step" value="Email me first" required />Email me first</label>
+                <label class="choice"><input type="radio" name="preferred_next_step" value="I am open to a discovery call" />I am open to a discovery call</label>
+                <label class="choice"><input type="radio" name="preferred_next_step" value="I just want a quote or next step recommendation" />I just want a quote or next step recommendation</label>
+              </div>
+            </fieldset>
+
+            <button class="button button-primary" type="submit">Submit Project Inquiry</button>
+            <p class="form-note">Your details will be emailed first. After submission, you will see the next page with a booking option.</p>
+          </form>
         </div>
       </div>
     </section>
 
-    <section>
+    <section id="contact-details">
       <div class="container final-cta">
-        <h2>Ready to start?</h2>
-        <p>Use the guided inquiry so the first conversation can focus on solutions instead of basic intake.</p>
+        <h2>Contact</h2>
+        <p>For a new project, please start with the project inquiry form. For general messages, you can still reach me by email.</p>
         <div class="page-actions">
-          <a class="button button-primary" href="contact.html">Start Inquiry</a>
-          <a class="button button-outline" href="mailto:benedick.tiaga04@gmail.com">Email Instead</a>
+          <a class="button button-primary" href="#project-inquiry">Start Project Inquiry</a>
+          <a class="button button-outline" href="mailto:benedick.tiaga04@gmail.com">Email Benedick</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-main">
-        <div>
-          <a href="index.html" class="footer-logo">
-            <span class="brand-mark">BT</span>
-            <span>Benedick Tiaga<small>Digital operations support</small></span>
-          </a>
-          <p class="footer-copy">Practical website, automation, backend, and content support for business owners, agencies, and growing teams.</p>
-          <div class="footer-badges" aria-label="Core services">
-            <span class="footer-badge">Websites</span>
-            <span class="footer-badge">Automation</span>
-            <span class="footer-badge">Backend support</span>
-            <span class="footer-badge">Content support</span>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h3>Services</h3>
-          <a href="services.html#websites">Website updates</a>
-          <a href="services.html#lead-flow">Lead flow support</a>
-          <a href="services.html#automation">Workflow automation</a>
-          <a href="services.html#backend">Backend admin</a>
-          <a href="work.html#videos">Video editing</a>
-        </div>
-        <div class="footer-col">
-          <h3>Company</h3>
-          <a href="work.html">Featured work</a>
-          <a href="services.html#process">Process</a>
-          <a href="services.html#plans">Engagements</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Start inquiry</a>
-        </div>
-        <div class="footer-col">
-          <h3>Contact</h3>
-          <a href="mailto:benedick.tiaga04@gmail.com">Email</a>
-          <a href="https://www.linkedin.com/in/benedick-tiaga-jr-51b253248/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="https://github.com/SyakNiPrimo" target="_blank" rel="noreferrer">GitHub</a>
-          <span>Complete the guided inquiry first, then choose whether to book a call.</span>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; <span id="year"></span> Benedick Tiaga. Built for GitHub Pages.</span>
-        <span>Helping businesses hand off digital work that slows them down.</span>
-      </div>
-    </div>
-  </footer>
+  <footer class="site-footer"><div class="container"><div class="footer-main"><div><a href="index.html" class="footer-logo"><span class="brand-mark">BT</span><span>Benedick Tiaga<small>Digital operations support</small></span></a><p class="footer-copy">Practical website, automation, backend, and content support for business owners, agencies, and growing teams.</p><div class="footer-badges" aria-label="Core services"><span class="footer-badge">Websites</span><span class="footer-badge">Automation</span><span class="footer-badge">Backend support</span><span class="footer-badge">Content support</span></div></div><div class="footer-col"><h3>Services</h3><a href="services.html#websites">Website updates</a><a href="services.html#lead-flow">Lead flow support</a><a href="services.html#automation">Workflow automation</a><a href="services.html#backend">Backend admin</a><a href="work.html#videos">Video editing</a></div><div class="footer-col"><h3>Company</h3><a href="index.html">Home</a><a href="services.html">Services</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Start Project Inquiry</a></div><div class="footer-col"><h3>Contact</h3><a href="contact.html#contact-details">Contact details</a><a href="mailto:benedick.tiaga04@gmail.com">Email</a><a href="https://www.linkedin.com/in/benedick-tiaga-jr-51b253248/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/SyakNiPrimo" target="_blank" rel="noreferrer">GitHub</a><span>Complete the project inquiry first, then choose the right next step.</span></div></div><div class="footer-bottom"><span>&copy; <span id="year"></span> Benedick Tiaga. Built for GitHub Pages.</span><span>Helping businesses hand off digital work that slows them down.</span></div></div></footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
