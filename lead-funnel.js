@@ -23,6 +23,9 @@
           <input type="hidden" name="_next" value="${thankYouUrl}" />
           <input type="hidden" name="lead_source" value="Website project inquiry funnel" />
           <input type="hidden" name="lead_status" value="New Inquiry" />
+          <input type="hidden" name="submitted_at" data-submitted-at />
+          <input type="hidden" name="page_url" data-page-url />
+          <input type="hidden" name="referrer" data-referrer />
           <input class="hidden-field" type="text" name="_honey" tabindex="-1" autocomplete="off" />
 
           <!-- Suggested CRM fields include service need, urgency, budget, lead source, preferred next step, and lead status. Suggested lead statuses: New Inquiry, Reviewing Fit, Qualified Lead, Call Booked, Proposal Sent, Won, Not Fit or Follow Up Later. -->
@@ -112,8 +115,17 @@
   const nextButton = modal.querySelector('[data-funnel-next]');
   const prevButton = modal.querySelector('[data-funnel-prev]');
   const submitButton = modal.querySelector('[data-funnel-submit]');
+  const submittedAtField = modal.querySelector('[data-submitted-at]');
+  const pageUrlField = modal.querySelector('[data-page-url]');
+  const referrerField = modal.querySelector('[data-referrer]');
   let currentStep = 0;
   let lastFocusedElement = null;
+
+  function updateSubmissionMetadata() {
+    submittedAtField.value = new Date().toISOString();
+    pageUrlField.value = window.location.href;
+    referrerField.value = document.referrer || 'Direct or unknown';
+  }
 
   function updateStep(index) {
     currentStep = index;
@@ -132,8 +144,8 @@
     return Array.from(step.querySelectorAll('input, select, textarea')).filter((field) => field.type !== 'hidden');
   }
 
-  function validateCurrentStep() {
-    const step = steps[currentStep];
+  function validateStep(stepIndex) {
+    const step = steps[stepIndex];
     const fields = getStepFields(step);
     const radioNames = new Set();
     const requiredChoiceGroup = step.querySelector('[data-required-choice]');
@@ -141,7 +153,7 @@
     if (requiredChoiceGroup) {
       const checked = requiredChoiceGroup.querySelector('input:checked');
       if (!checked) {
-        return { valid: false, field: requiredChoiceGroup.querySelector('input') };
+        return { valid: false, stepIndex, field: requiredChoiceGroup.querySelector('input') };
       }
     }
 
@@ -156,7 +168,7 @@
       }
 
       if (!field.checkValidity()) {
-        return { valid: false, field };
+        return { valid: false, stepIndex, field };
       }
     }
 
@@ -165,7 +177,22 @@
       const requiresSelection = group.some((field) => field.required);
       const hasSelection = group.some((field) => field.checked);
       if (requiresSelection && !hasSelection) {
-        return { valid: false, field: group[0] };
+        return { valid: false, stepIndex, field: group[0] };
+      }
+    }
+
+    return { valid: true };
+  }
+
+  function validateCurrentStep() {
+    return validateStep(currentStep);
+  }
+
+  function validateAllSteps() {
+    for (let stepIndex = 0; stepIndex < steps.length; stepIndex += 1) {
+      const result = validateStep(stepIndex);
+      if (!result.valid) {
+        return result;
       }
     }
 
@@ -189,6 +216,7 @@
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('funnel-open');
+    updateSubmissionMetadata();
     updateStep(0);
     setTimeout(() => {
       const firstInput = steps[0].querySelector('input, textarea, select, button');
@@ -242,9 +270,11 @@
   });
 
   form.addEventListener('submit', (event) => {
-    const result = validateCurrentStep();
+    updateSubmissionMetadata();
+    const result = validateAllSteps();
     if (!result.valid) {
       event.preventDefault();
+      updateStep(result.stepIndex);
       showError(result.field);
     }
   });
